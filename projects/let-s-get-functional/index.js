@@ -38,18 +38,10 @@ var femaleCount = function(array){
 
 };
 
-//invoke reduce
-    //output = string 
 
 
-var oldestCustomer = function(array){
-    let oldest = _.reduce(array, function(accumulator, current){
-        if (current.age === 'Adele Mullen'){
-        }
-        return accumulator;
-    });
-    return;
-};
+
+var oldestCustomer;
 
 var youngestCustomer;
 
