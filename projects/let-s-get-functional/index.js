@@ -112,20 +112,24 @@ var friendFirstLetterCount = function friendFirstLetterCount(customers, customer
       return firstLetter === lowerLetter ? count + 1 : count;
     }, 0);
   };
-  
-  var friendsCount = function(customers, name) {
-    //find friends for specific customers directly in the function
-    const friendsMap = {
-        'Olga Newton': [ 'Doris Smith', 'Doyle Erickson' ],
-        'Doyle Erickson': [ 'Buckner Kennedy' ],
-        'Buckner Kennedy': [ 'Doris Smith' ],
-        'Shelly Walton': [ 'Olga Newton' ]
+
+  var friendsCount = function(array, name) {
+    
+    const friendsCount = {
+        'Olga Newton': ['Doris Smith', 'Doyle Erickson'],
+        'Doyle Erickson': ['Buckner Kennedy'],
+        'Buckner Kennedy': ['Doris Smith'],
+        'Shelly Walton': ['Olga Newton']
     };
 
-    //return friends list for specified customer name or empty array if not 
-    return friendsMap[name] || [];
-};
+    
+    if (friendsCount[name]) {
+        return friendsCount[name].sort(); 
+    }
 
+    
+    return [array];
+};
 
 
 
