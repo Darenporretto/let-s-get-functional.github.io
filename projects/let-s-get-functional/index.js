@@ -130,7 +130,10 @@ var friendFirstLetterCount = function friendFirstLetterCount(customers, customer
     
     return [array];
 };
-
+  
+  
+  
+  
 
 
 
