@@ -113,22 +113,16 @@ var friendFirstLetterCount = function friendFirstLetterCount(customers, customer
     }, 0);
   };
 
-  var friendsCount = function(array, name) {
-    
-    const friendsCount = {
-        'Olga Newton': ['Doris Smith', 'Doyle Erickson'],
-        'Doyle Erickson': ['Buckner Kennedy'],
-        'Buckner Kennedy': ['Doris Smith'],
-        'Shelly Walton': ['Olga Newton']
-    };
-
-    
-    if (friendsCount[name]) {
-        return friendsCount[name].sort(); 
+  var friendsCount = function(arrayOfCustomers, nameOfFriend) {
+    let arr = [];
+    for(let i = 0; i < arrayOfCustomers.length; i++) {
+      for(let i2 = 0; i2 < arrayOfCustomers[i].friends.length; i2++) {
+        if(arrayOfCustomers[i].friends[i2].name === nameOfFriend) {
+          arr.push(arrayOfCustomers[i].name);
+        }
+      }
     }
-
-    
-    return [array];
+   return arr
 };
   
   
