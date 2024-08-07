@@ -114,15 +114,19 @@ var friendFirstLetterCount = function friendFirstLetterCount(customers, customer
   };
 
   var friendsCount = function(arrayOfCustomers, nameOfFriend) {
-    let arr = [];
+    //create emoty array
+    let arr = [];//loop through the customers
     for(let i = 0; i < arrayOfCustomers.length; i++) {
       for(let i2 = 0; i2 < arrayOfCustomers[i].friends.length; i2++) {
+        //loop through customers friends
         if(arrayOfCustomers[i].friends[i2].name === nameOfFriend) {
+          //check for matches
           arr.push(arrayOfCustomers[i].name);
+          //add to arr using .push if there are matches
         }
       }
     }
-   return arr
+   return arr //return result
 };
   
   
