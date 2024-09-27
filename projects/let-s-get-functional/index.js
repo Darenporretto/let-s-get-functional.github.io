@@ -22,14 +22,38 @@ var _ = require('underbar');
  */
 
 var maleCount = function(array) {
-
+    return array.filter(function(customer) {
+        return customer.gender === 'male'; //check if the customer's gender is male
+    }).length; //return the count of male customers
 };
 
-var femaleCount;
+var femaleCount = function(array) {
+    return array.reduce(function(count, customer) {
+        //increment count if the customer is female
+        return count + (customer.gender === 'female' ? 1 : 0);
+    }, 0);//start the count at zero
+};
 
-var oldestCustomer;
+var oldestCustomer = function(array) {
+    let oldest = _.reduce(array, function(accumulator, current) {
+        //acc = adele mullen | current = Olga Newton
+        if (current.age > accumulator.age) {
+            return current;
+        }
+        return accumulator;
+    });
+    return oldest.name;
+};
 
-var youngestCustomer;
+var youngestCustomer = function(array) {
+    return _.reduce(array, function(accumulator, current) {
+        //check if cureeent is younger thsn accumulator
+        if (!accumulator || current.age < accumulator.age) {
+            return current; //update accumulator to the current customer
+        }
+        return accumulator; //keep exsisting accumulator
+    }, null).name; //return youngest customer
+};
 
 var averageBalance;
 
