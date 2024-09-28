@@ -55,9 +55,29 @@ var youngestCustomer = function(array) {
     }, null).name; //return youngest customer
 };
 
-var averageBalance;
+var averageBalance = function(array) {
+    if (!Array.isArray(array) || array.length === 0) return 0;
 
-var firstLetterCount;
+    var totalBalance = _.reduce(array, (accumulator, customer) => {
+        //remove the dollar sign and commas, then convert to number
+        var balanceStr = customer.balance.replace(/[$,]/g, '');
+        var balanceNum = +balanceStr; //using unary plus to convert string to number
+        return accumulator + balanceNum;
+    }, 0);
+
+    return totalBalance / array.length;
+};
+
+var firstLetterCount = function(array, letter) {
+    //check if array is array
+    if (!Array.isArray(array) || typeof letter !== 'string') return 0;
+    //switch the letters to lowercase for case insensitive comparison
+    letter = letter.toLowerCase();
+    //filter the array to find names that start with a given letter
+    var count = array.filter(customer => customer.name.toLowerCase().startsWith(letter)).length;
+    //return first letter count
+    return count;
+};
 
 var friendFirstLetterCount;
 
