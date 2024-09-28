@@ -69,9 +69,9 @@ var averageBalance = function(array) {
 };
 
 var firstLetterCount = function(array, letter) {
-    //check if array is array
+    //check if array is array and if letter is a string if not return zero
     if (!Array.isArray(array) || typeof letter !== 'string') return 0;
-    //switch the letters to lowercase for case insensitive comparison
+    //switch the letters to lowercase for case sensitive comparison
     letter = letter.toLowerCase();
     //filter the array to find names that start with a given letter
     var count = array.filter(customer => customer.name.toLowerCase().startsWith(letter)).length;
@@ -79,9 +79,30 @@ var firstLetterCount = function(array, letter) {
     return count;
 };
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter) {
+    //if letter is a string, if not return zero, convert for case sensitivity 
+    if (typeof letter !== 'string') return 0;
+    letter = letter.toLowerCase();
+    //find the given customer
+    const foundCustomer = array.find(c => c.name === customer);
+    //if not found return zero
+    if (!foundCustomer || !Array.isArray(foundCustomer.friends)) return 0;
+    //filter friends by the first letter in their name
+    const count = foundCustomer.friends.filter(friend => friend.name.toLowerCase().startsWith(letter)).length;
+    //return new array of friends count
+    return count;
+};
 
-var friendsCount;
+var friendsCount = function( array, name) {
+    //check if name is a string if not return an empty array
+    if (typeof name !== 'string') return [];
+    //use filter method to create new array of given customers friends
+    const result = array.filter(customer => //check if friends propert exist for each objet
+        customer.friends && customer.friends.some(friend => friend.name === name)//use some to find specific name in list
+        ).map(customer => customer.name);//use map method to create array of customers friends names
+        //return the result array
+        return result;
+};
 
 var topThreeTags;
 
