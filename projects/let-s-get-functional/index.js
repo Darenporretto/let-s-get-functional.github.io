@@ -104,9 +104,36 @@ var friendsCount = function(array, name) {
         return result;
 };
 
-var topThreeTags;
+var topThreeTags = function(array) {
+    //create an empty object to store tag counts
+    const tagCount = {};
+    //count tag occurences
+    array.forEach(customer => {//loop iterates over each customer
+        customer.tags.forEach(tag => {//nested loop iterates over each tag
+            tagCount[tag] = (tagCount[tag] || 0) + 1;//increment by one
+        });
+    });
+    //covert to tag entries
+    return Object.entries(tagCount)
+    .sort((a, b) => b[1] - a[1])//sort descending tag count
+    .slice(0, 3) //takes the top three tags
+    .map(entry => entry[0]);//return only the tag names
+};
 
-var genderCount;
+var genderCount = function(array) {
+    //use reduce to iterate over each customer object
+    return array.reduce((accumulator, customer) => {
+        //find each genderr in customer objects
+        const gender = customer.gender;
+        //check if gender key exists, if not initialize to zero
+        if (!accumulator[gender]) {
+            accumulator[gender] = 0;
+        }
+        //increment counts for each gender
+        accumulator[gender]++;
+        return accumulator; //return updated acc
+    }, {});//starts with an empty object
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
