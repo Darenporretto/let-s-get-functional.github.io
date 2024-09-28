@@ -93,7 +93,7 @@ var friendFirstLetterCount = function(array, customer, letter) {
     return count;
 };
 
-var friendsCount = function( array, name) {
+var friendsCount = function(array, name) {
     //check if name is a string if not return an empty array
     if (typeof name !== 'string') return [];
     //use filter method to create new array of given customers friends
